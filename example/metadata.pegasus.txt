@@ -1,0 +1,33 @@
+# Example metadata for an Indybox cabinet. Put this next to the games and add that folder
+# in Pegasus: Settings > Set game directories. Replace the paths and text with your own.
+
+collection: Indybox
+shortname: indybox
+launch: "{file.path}"
+
+game: Verminian Trap
+file: Locomalito/VerminianTrap/VerminianTrap.exe
+developer: Locomalito
+players: 4
+genre: Action
+summary: Placeholder blurb. Keep it to a sentence or two so it reads well from a metre away.
+x-qr: C:/indybox/qr/verminian-trap.png
+x-url: locomalito.com
+
+game: Darkula
+file: Locomalito/Darkula/Darkula.exe
+developer: Locomalito
+players: 1
+genre: Platformer
+summary: Placeholder blurb.
+x-qr: C:/indybox/qr/darkula.png
+x-url: locomalito.com
+
+game: Maldita Castilla
+file: Locomalito/MalditaCastilla/MalditaCastilla.exe
+developer: Locomalito
+players: 2
+genre: Action
+summary: Placeholder blurb.
+x-qr: C:/indybox/qr/maldita-castilla.png
+x-url: locomalito.com
