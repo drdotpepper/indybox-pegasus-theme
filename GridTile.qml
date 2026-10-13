@@ -64,7 +64,7 @@ Item {
         inset: tile.inset
         fillColor: tile.selected ? S.accent : Qt.rgba(8 / 255, 15 / 255, 22 / 255, 0.94)
         lineColor: S.panelLine
-        lineWidth: tile.selected ? 0 : 3
+        lineWidth: tile.selected ? 0 : 4
     }
 
     Text {
