@@ -173,13 +173,14 @@ Item {
             minimumPixelSize: title.minimumPixelSize
             maximumLineCount: title.maximumLineCount
             elide: title.elide
+            verticalAlignment: title.verticalAlignment
         }
         Text {
             id: title
             x: 36 * menu.u
             y: 104 * menu.u
             width: 492 * menu.u
-            height: 210 * menu.u
+            height: 220 * menu.u
             text: S.upper(menu.game ? menu.game.title : "")
             color: S.fg
             font.family: menu.fonts.display
@@ -192,14 +193,15 @@ Item {
             minimumPixelSize: 48 * menu.u
             maximumLineCount: 3
             elide: Text.ElideRight
-            verticalAlignment: Text.AlignTop
+            verticalAlignment: Text.AlignVCenter
         }
         Row {
             id: chips
             x: 36 * menu.u
-            y: title.y + title.contentHeight + 23 * menu.u
+            y: title.y + title.height + 16 * menu.u
             spacing: 14 * menu.u
             Pill {
+                width: 176 * menu.u
                 u: menu.u
                 family: menu.fonts.pixel
                 fontSize: 30
@@ -207,6 +209,7 @@ Item {
             }
             Pill {
                 visible: menu.game && menu.game.genre ? true : false
+                width: 282 * menu.u
                 u: menu.u
                 family: menu.fonts.pixel
                 fontSize: 30

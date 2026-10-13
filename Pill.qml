@@ -27,6 +27,8 @@ Rectangle {
         width: Math.min(implicitWidth, pill.width - 40 * pill.u)
         elide: Text.ElideRight
         text: pill.text
+        fontSizeMode: Text.HorizontalFit
+        minimumPixelSize: 18 * pill.u
         color: pill.filled ? S.bg : pill.tone
         font.family: pill.family
         font.pixelSize: pill.fontSize * pill.u

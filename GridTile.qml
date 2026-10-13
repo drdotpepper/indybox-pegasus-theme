@@ -16,7 +16,7 @@ Item {
     readonly property real tileW: 572
     readonly property real tileH: 369
     readonly property real tabH: 40
-    readonly property real inset: 8
+    readonly property real inset: selected ? 8 : 16   // unselected: roomier gap so the art clears the stepped corners
     readonly property real tabW: selected ? 322 : 330
     readonly property real textW: tabW - (selected ? 32 : 38)    // room for the title
     readonly property real maxTextSize: selected ? 52 : 54
@@ -62,7 +62,7 @@ Item {
         tabW: tile.tabW
         tabH: tile.tabH
         inset: tile.inset
-        fillColor: tile.selected ? S.accent : Qt.rgba(8 / 255, 15 / 255, 22 / 255, 0.94)
+        fillColor: tile.selected ? S.accent : Qt.rgba(8 / 255, 15 / 255, 22 / 255, 1.0)
         lineColor: S.panelLine
         lineWidth: tile.selected ? 0 : 4
     }

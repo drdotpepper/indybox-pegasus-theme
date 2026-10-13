@@ -19,9 +19,9 @@ Rectangle {
     readonly property string dev: S.upper(S.cleanDev(game ? game.developer : ""))
     readonly property bool hasDev: dev !== ""
 
-    visible: hasDev || qr !== ""
+    visible: wide || hasDev || qr !== ""
     width: (wide ? 472 : 240) * u
-    height: (wide ? Math.max(wideText.height, 104 * u) : col.height) + 44 * u
+    height: wide ? 148 * u : col.height + 44 * u
     radius: 15 * u
     color: Qt.rgba(0, 0, 0, 0.8)
     border.width: Math.max(1, Math.round(u))
@@ -85,7 +85,7 @@ Rectangle {
         visible: panel.wide
         x: 22 * panel.u
         y: 22 * panel.u
-        width: panel.width - 44 * panel.u - (panel.qr !== "" ? 126 * panel.u : 0)
+        width: panel.width - 44 * panel.u - 126 * panel.u
         spacing: 8 * panel.u
 
         Text {
