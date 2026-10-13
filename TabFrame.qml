@@ -9,6 +9,7 @@ Item {
     property real u: 1
     property real tabW: 300
     property real tabH: 40
+    property real px: 4          // size of one "pixel" in the corner steps
     property real tabR: 14       // tab top corner radius
     property real returnR: 10    // concave corner where the tab meets the frame top
     property real frameR: 20     // frame body corner radius
@@ -33,47 +34,54 @@ Item {
         anchors.fill: parent
         renderStrategy: Canvas.Cooperative
 
-        // Outer outline, clockwise from the left edge of the tab. `g` pulls the line in
-        // by half a stroke so a 1px outline lands on whole pixels and stays crisp.
-        function outline(ctx, g) {
-            var s = frame.u;
-            var w = width - g, h = height - g;
-            var l = g, t0 = g;
-            var tw = Math.min(frame.tabW * s, w - 2 * frame.frameR * s);
-            var th = frame.tabH * s + g;
-            var tr = frame.tabR * s, rr = frame.returnR * s, R = frame.frameR * s;
-            var PI = Math.PI;
-            ctx.moveTo(l, t0 + tr);
-            ctx.arc(l + tr, t0 + tr, tr, PI, 1.5 * PI, false);            // tab, top-left
-            ctx.lineTo(l + tw - tr, t0);
-            ctx.arc(l + tw - tr, t0 + tr, tr, 1.5 * PI, 0, false);        // tab, top-right
-            ctx.lineTo(l + tw, th - rr);
-            ctx.arc(l + tw + rr, th - rr, rr, PI, 0.5 * PI, true);        // return corner
-            ctx.lineTo(w - R, th);
-            ctx.arc(w - R, th + R, R, 1.5 * PI, 0, false);                // frame, top-right
-            ctx.lineTo(w, h - R);
-            ctx.arc(w - R, h - R, R, 0, 0.5 * PI, false);                 // frame, bottom-right
-            ctx.lineTo(l + R, h);
-            ctx.arc(l + R, h - R, R, 0.5 * PI, PI, false);                // frame, bottom-left
-            ctx.lineTo(l, t0 + tr);
+        // Corners are built from square "pixels" (px design units each) instead of curves.
+        // A corner is [cornerX, cornerY, inDirX, inDirY, outDirX, outDirY, steps].
+        function poly(ctx, corners, p) {
+            for (var i = 0; i < corners.length; i++) {
+                var c = corners[i], k = c[6];
+                var x = c[0] - c[2] * k * p, y = c[1] - c[3] * k * p;
+                if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                for (var j = 0; j < k; j++) {
+                    x += c[2] * p; y += c[3] * p; ctx.lineTo(x, y);
+                    x += c[4] * p; y += c[5] * p; ctx.lineTo(x, y);
+                }
+            }
             ctx.closePath();
+        }
+
+        function pxSize() { return Math.max(1, Math.round(frame.px * frame.u)); }
+        function steps(r) { return Math.max(1, Math.round(r / frame.px)); }
+
+        // Outer outline, clockwise. `g` pulls the line in by half a stroke so a 1px
+        // outline lands on whole pixels and stays crisp.
+        function outline(ctx, g) {
+            var p = pxSize();
+            var w = width - g, h = height - g, l = g, t0 = g;
+            var tw = Math.round(Math.min(frame.tabW * frame.u, w - 2 * frame.frameR * frame.u));
+            var th = Math.round(frame.tabH * frame.u) + g;
+            var kt = steps(frame.tabR), kr = steps(frame.returnR), kf = steps(frame.frameR);
+            poly(ctx, [
+                [l,      t0, 0, -1,  1, 0, kt],   // tab, top-left
+                [l + tw, t0, 1,  0,  0, 1, kt],   // tab, top-right
+                [l + tw, th, 0,  1,  1, 0, kr],   // return corner (concave)
+                [w,      th, 1,  0,  0, 1, kf],   // frame, top-right
+                [w,      h,  0,  1, -1, 0, kf],   // frame, bottom-right
+                [l,      h, -1,  0,  0, -1, kf]   // frame, bottom-left
+            ], p);
         }
 
         // Picture window, drawn the other way round so it punches a hole in the fill.
         function windowHole(ctx) {
-            var s = frame.u;
-            var x0 = frame.inset * s, y0 = frame.tabH * s + frame.inset * s;
-            var x1 = width - frame.inset * s, y1 = height - frame.inset * s;
-            var r = frame.windowR * s, PI = Math.PI;
-            ctx.moveTo(x0 + r, y0);
-            ctx.arc(x0 + r, y0 + r, r, 1.5 * PI, PI, true);
-            ctx.lineTo(x0, y1 - r);
-            ctx.arc(x0 + r, y1 - r, r, PI, 0.5 * PI, true);
-            ctx.lineTo(x1 - r, y1);
-            ctx.arc(x1 - r, y1 - r, r, 0.5 * PI, 0, true);
-            ctx.lineTo(x1, y0 + r);
-            ctx.arc(x1 - r, y0 + r, r, 0, 1.5 * PI, true);
-            ctx.closePath();
+            var p = pxSize(), s = frame.u;
+            var x0 = Math.round(frame.inset * s), y0 = Math.round((frame.tabH + frame.inset) * s);
+            var x1 = width - x0, y1 = height - x0;
+            var k = steps(frame.windowR);
+            poly(ctx, [
+                [x0, y0, -1, 0,  0, 1, k],
+                [x0, y1,  0, 1,  1, 0, k],
+                [x1, y1,  1, 0,  0, -1, k],
+                [x1, y0,  0, -1, -1, 0, k]
+            ], p);
         }
 
         onPaint: {
@@ -89,6 +97,7 @@ Item {
             if (frame.lineWidth > 0) {
                 var lw = Math.max(1, Math.round(frame.lineWidth * frame.u));
                 ctx.lineWidth = lw;
+                ctx.lineJoin = "miter";
                 ctx.strokeStyle = frame.lineColor;
                 ctx.beginPath();
                 outline(ctx, lw / 2);
