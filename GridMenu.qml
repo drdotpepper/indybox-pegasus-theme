@@ -55,7 +55,7 @@ Item {
     }
 
     // ---- backdrop: selected game's art, dimmed like the website's taproom photo ----
-    Rectangle { anchors.fill: parent; color: S.bg }
+    Rectangle { anchors.fill: parent; color: S.navy }
     Image {
         anchors.fill: parent
         source: menu.game && menu.game.assets
@@ -64,11 +64,11 @@ Item {
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
     }
-    Rectangle {
+    Rectangle {   // heavy dim: the art is only a faint tint behind the navy
         anchors.fill: parent
         gradient: Gradient {
-            GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.62) }
-            GradientStop { position: 1.0; color: Qt.rgba(0, 0, 0, 0.90) }
+            GradientStop { position: 0.0; color: Qt.rgba(6 / 255, 9 / 255, 13 / 255, 0.94) }
+            GradientStop { position: 1.0; color: Qt.rgba(6 / 255, 9 / 255, 13 / 255, 0.97) }
         }
     }
 
@@ -90,37 +90,27 @@ Item {
         smooth: false
         mipmap: false
     }
-    Row {
-        anchors.right: parent.right
-        anchors.rightMargin: 96 * menu.u
-        y: 30 * menu.u
-        spacing: 18 * menu.u
-
-        Pill {
-            u: menu.u
-            family: menu.fonts.pixel
-            fontSize: 38
-            filled: true
-            tone: S.accent
-            text: "FREE PLAY"
-        }
-        Pill {
-            u: menu.u
-            family: menu.fonts.pixel
-            fontSize: 38
-            text: "@" + S.upper(Config.venueName)
-        }
+    Text {
+        x: 342 * menu.u
+        y: 10 * menu.u
+        height: 100 * menu.u
+        verticalAlignment: Text.AlignVCenter
+        text: "@" + S.upper(Config.venueName)
+        color: S.fg
+        font.family: menu.fonts.pixel
+        font.pixelSize: 74 * menu.u
+        font.letterSpacing: 1.5 * menu.u
     }
 
     // ---- the grid ----
     GridView {
         id: grid
-        x: 80 * menu.u
-        y: 150 * menu.u
-        width: 1152 * menu.u
-        height: 858 * menu.u
-        cellWidth: 384 * menu.u
-        cellHeight: 286 * menu.u
+        x: 86 * menu.u
+        y: 174 * menu.u
+        width: 1182 * menu.u          // two columns
+        height: 818 * menu.u          // two rows
+        cellWidth: 591 * menu.u
+        cellHeight: 409 * menu.u
         readonly property int columns: Math.max(1, Math.floor(width / cellWidth))
         readonly property int visibleRows: Math.max(1, Math.floor(height / cellHeight + 0.01))
         property int topRow: 0
@@ -136,13 +126,11 @@ Item {
             else if (row >= topRow + visibleRows) topRow = row - visibleRows + 1;
             contentY = originY + topRow * cellHeight;
         }
-        delegate: GameTile {
+        delegate: GridTile {
             game: modelData
             selected: GridView.isCurrentItem
             fonts: menu.fonts
             u: menu.u
-            artW: 352
-            artH: 198
         }
     }
 
@@ -154,7 +142,7 @@ Item {
         width: 544 * menu.u
         height: 826 * menu.u
         radius: 15 * menu.u
-        color: Qt.rgba(0, 0, 0, 0.55)
+        color: Qt.rgba(0, 0, 0, 0.75)
         border.width: Math.max(1, Math.round(menu.u))
         border.color: S.line
         visible: menu.game !== null
@@ -164,7 +152,7 @@ Item {
             y: 32 * menu.u
             width: 472 * menu.u
             height: 44 * menu.u
-            text: menu.game && menu.game.developer ? ("BY " + S.upper(menu.game.developer)) : ""
+            text: menu.game && menu.game.developer ? ("BY " + S.upper(S.cleanDev(menu.game.developer))) : ""
             color: S.accent
             font.family: menu.fonts.pixel
             font.pixelSize: 40 * menu.u
@@ -189,14 +177,15 @@ Item {
         Text {
             id: title
             x: 36 * menu.u
-            y: 84 * menu.u
-            width: 472 * menu.u
+            y: 104 * menu.u
+            width: 492 * menu.u
             height: 210 * menu.u
             text: S.upper(menu.game ? menu.game.title : "")
             color: S.fg
             font.family: menu.fonts.display
             font.italic: true
             font.pixelSize: 112 * menu.u
+            font.letterSpacing: 1.2 * menu.u
             lineHeight: 0.98
             wrapMode: Text.WordWrap
             fontSizeMode: Text.Fit
@@ -208,7 +197,7 @@ Item {
         Row {
             id: chips
             x: 36 * menu.u
-            y: title.y + title.contentHeight + 26 * menu.u
+            y: title.y + title.contentHeight + 23 * menu.u
             spacing: 14 * menu.u
             Pill {
                 u: menu.u
@@ -226,16 +215,16 @@ Item {
         }
         Text {
             x: 36 * menu.u
-            y: chips.y + chips.height + 24 * menu.u
+            y: chips.y + chips.height + 28 * menu.u
             width: 472 * menu.u
             height: 150 * menu.u
             text: menu.game ? (menu.game.summary || menu.game.description || "") : ""
             color: S.fg
             font.family: menu.fonts.text
             font.pixelSize: 26 * menu.u
-            lineHeight: 1.3
+            lineHeight: 1.55
             wrapMode: Text.WordWrap
-            maximumLineCount: 4
+            maximumLineCount: 3
             elide: Text.ElideRight
         }
 

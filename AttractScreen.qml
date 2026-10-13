@@ -116,7 +116,7 @@ Item {
         }
         Text {
             width: parent.width
-            text: attract.showGame && attract.showGame.developer ? ("by " + attract.showGame.developer) : ""
+            text: attract.showGame && attract.showGame.developer ? ("by " + S.cleanDev(attract.showGame.developer)) : ""
             color: S.muted
             font.family: attract.fonts.text
             font.pixelSize: 30 * attract.u

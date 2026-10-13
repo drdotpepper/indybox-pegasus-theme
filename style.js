@@ -9,11 +9,23 @@ var plate  = "#0f0f0e";
 var accent = "#ff7a00";   // orange: dot on the "i", hover/focus fill
 var green  = "#6fcf4a";   // from the pixel burger icon
 
+// Grid menu: dark navy backdrop and unselected tile panels
+var navy      = "#06090d";
+var panelFill = "#080f16";
+var panelLine = "#535656";
+
 // Colours the bouncing venue tag cycles through on each wall hit
 var bounceColors = [accent, green, fg];
 
 function upper(s) {
     return (s === undefined || s === null) ? "" : String(s).toUpperCase();
+}
+
+// Steam/itch data often already says "By Somebody"; we add our own "BY " label,
+// so drop a leading "by " to avoid "BY BY SOMEBODY".
+function cleanDev(s) {
+    if (s === undefined || s === null) return "";
+    return String(s).replace(/^\s*by\s+/i, "");
 }
 
 function playersLabel(n) {

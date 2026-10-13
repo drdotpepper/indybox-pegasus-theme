@@ -23,9 +23,11 @@ attract mode, and how long each title card shows are all there. Nothing else cha
 
 ## What it does
 
-- **Menu, grid layout (default):** a 3-column grid of tiles with a detail panel on the right
-  (title, players, blurb, credits/QR). Stick in any direction moves around the grid, up/down wrap
-  top to bottom, and it scrolls a row at a time once you have more than nine games.
+- **Menu, grid layout (default):** a 2x2 grid of tiles, each with its title on a tab above the
+  screenshot (long titles shrink to fit the tab). The selected tile is orange; the others are dimmed.
+  A detail panel on the right shows title, players, blurb and credits with a QR code. Stick in any
+  direction moves around the grid, up/down wrap top to bottom, and it scrolls a row at a time once
+  you have more than four games. The venue name sits in the header next to the logo.
 - **Menu, strip layout:** one big hero for the selected game over a single row of tiles.
   Any stick direction steps along the row.
 - Both: the accept button plays, and the last game is remembered after you quit a game.

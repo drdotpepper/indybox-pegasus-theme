@@ -109,7 +109,7 @@ Item {
             id: devLine
             width: parent.width
             height: 44 * menu.u
-            text: menu.game && menu.game.developer ? ("BY " + S.upper(menu.game.developer)) : ""
+            text: menu.game && menu.game.developer ? ("BY " + S.upper(S.cleanDev(menu.game.developer))) : ""
             color: S.accent
             font.family: menu.fonts.pixel
             font.pixelSize: 42 * menu.u
