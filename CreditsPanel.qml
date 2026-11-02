@@ -102,8 +102,8 @@ Rectangle {
             color: S.fg
             font.family: panel.fonts.display
             font.pixelSize: 44 * panel.u
-            wrapMode: Text.WordWrap
-            maximumLineCount: 2
+            fontSizeMode: Text.HorizontalFit
+            minimumPixelSize: 24 * panel.u
             elide: Text.ElideRight
         }
         Text {
