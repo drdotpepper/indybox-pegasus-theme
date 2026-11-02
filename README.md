@@ -70,3 +70,10 @@ an image explicitly per game with `assets.screenshot: path/to/file.png` in the m
   Check Settings > Controls so accept/cancel match your buttons.
 - Not in the theme (needs doing outside Pegasus): the hold-two-buttons exit combo, an idle
   watchdog that closes a running game, and booting straight into Pegasus.
+
+## Hands-free updates (cabinet PC)
+
+Double-click `setup-auto-update.bat` once. After that the PC downloads theme updates every
+15 minutes and restarts Pegasus at 05:00 so the new look appears. To see an update straight
+away, double-click `update-theme.bat` and press F5. Needs Git for Windows installed, and the
+PC must be logged in to Windows.
