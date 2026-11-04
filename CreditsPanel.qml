@@ -22,7 +22,7 @@ Rectangle {
     visible: wide || hasDev || qr !== ""
     width: (wide ? 472 : 240) * u
     height: wide ? 148 * u : col.height + 44 * u
-    radius: 15 * u
+    radius: 0
     color: Qt.rgba(0, 0, 0, 0.8)
     border.width: Math.max(1, Math.round(u))
     border.color: S.fg

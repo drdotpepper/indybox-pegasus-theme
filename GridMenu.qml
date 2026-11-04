@@ -141,7 +141,7 @@ Item {
         y: 170 * menu.u
         width: 544 * menu.u
         height: 826 * menu.u
-        radius: 15 * menu.u
+        radius: 0
         color: Qt.rgba(0, 0, 0, 0.75)
         border.width: Math.max(1, Math.round(menu.u))
         border.color: S.line

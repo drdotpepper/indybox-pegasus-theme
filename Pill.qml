@@ -1,7 +1,7 @@
 import QtQuick 2.8
 import "style.js" as S
 
-// The site's boxed button: 1px outline, 15px corners, pixel font.
+// The site's boxed button: 1px outline, pixel font.
 // filled: true gives the orange "hover" state (fill + black text).
 Rectangle {
     id: pill
@@ -13,7 +13,7 @@ Rectangle {
     property real u: 1
     property real fontSize: 34
 
-    radius: 15 * u
+    radius: 0
     color: filled ? tone : "transparent"
     border.width: Math.max(1, Math.round(u))
     border.color: tone
