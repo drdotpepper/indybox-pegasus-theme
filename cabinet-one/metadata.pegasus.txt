@@ -50,3 +50,13 @@ players: 1
 # genre: <e.g. Puzzle>
 # summary: <one or two sentences>
 # x-url: <their itch.io page>
+
+game: Pico World Race
+file: Pico World Race/pwr.exe
+assets.screenshot: Pico World Race/indybox-thumbnail.png
+players: 1
+# To finish this one, add these lines (delete the # at the start of each):
+# developer: <their name>
+# genre: <e.g. Racing>
+# summary: <one or two sentences>
+# x-url: <their itch.io page>
