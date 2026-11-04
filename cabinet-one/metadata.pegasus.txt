@@ -40,3 +40,13 @@ players: 1
 genre: Action platformer
 summary: A Greek-myth action platformer with boss fights and exploration stages, built to old-school limits.
 x-url: locomalito.com
+
+game: Sploob
+file: sploob/Sploob.exe
+assets.screenshot: sploob/indybox-thumbnail.png
+players: 1
+# To finish this one, add these lines (delete the # at the start of each):
+# developer: <their name>
+# genre: <e.g. Puzzle>
+# summary: <one or two sentences>
+# x-url: <their itch.io page>
