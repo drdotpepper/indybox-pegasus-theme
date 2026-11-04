@@ -1,0 +1,38 @@
+# Cabinet one games list. Save this as C:\Indybox\games\metadata.pegasus.txt
+# (it sits next to the game folders). Edit the blurbs and player counts any time.
+
+collection: Indybox
+shortname: indybox
+launch: "{file.path}"
+
+game: Gaurodan
+file: gaurodan/Gaurodan.exe
+developer: Locomalito
+players: 1
+genre: Shoot 'em up
+summary: Play a giant bird rampaging across the Canary Islands, flattening cities, armies and monsters in a mid-80s style arcade shooter.
+x-url: locomalito.com
+
+game: Hydorah
+file: hydorah/Hydorah.exe
+developer: Locomalito
+players: 1
+genre: Shoot 'em up
+summary: A big, old-school space shooter with a hard-won arsenal and huge bosses.
+x-url: locomalito.com
+
+game: Maldita Castilla
+file: maldita-castilla/maldita_castilla_arcade_cabinet.exe
+developer: Locomalito
+players: 1
+genre: Action platformer
+summary: Knight Don Ramiro fights demons across a cursed medieval Spain in a Ghosts 'n Goblins style arcade platformer.
+x-url: locomalito.com
+
+game: The Curse of Issyos
+file: the-curse-of-issyos/Curse of Issyos.exe
+developer: Locomalito
+players: 1
+genre: Action platformer
+summary: A Greek-myth action platformer with boss fights and exploration stages, built to old-school limits.
+x-url: locomalito.com
