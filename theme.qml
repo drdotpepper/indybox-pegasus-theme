@@ -12,12 +12,12 @@ FocusScope {
     property string mode: "menu"
     property int idle: 0
 
-    FontLoader { id: antonFont;  source: "assets/fonts/Anton-Regular.ttf" }
+    FontLoader { id: rubikFont;  source: "assets/fonts/Rubik-BlackItalic.ttf" }
     FontLoader { id: jerseyFont; source: "assets/fonts/Jersey10-Regular.ttf" }
     FontLoader { id: interFont;  source: "assets/fonts/Inter-Variable.ttf" }
 
     readonly property var fontSet: ({
-        display: antonFont.name  !== "" ? antonFont.name  : "Impact",
+        display: rubikFont.name  !== "" ? rubikFont.name  : "Arial Black",
         pixel:   jerseyFont.name !== "" ? jerseyFont.name : "Courier New",
         text:    interFont.name  !== "" ? interFont.name  : "Segoe UI"
     })

@@ -156,8 +156,10 @@ Item {
             color: S.accent
             font.family: menu.fonts.display
             font.italic: true
-            font.pixelSize: 44 * menu.u
-            font.letterSpacing: 1.2 * menu.u
+            font.pixelSize: 40 * menu.u
+            font.letterSpacing: 0
+            fontSizeMode: Text.HorizontalFit
+            minimumPixelSize: 24 * menu.u
             elide: Text.ElideRight
         }
         Text {   // hard shadow, like the website headline
@@ -187,8 +189,8 @@ Item {
             font.family: menu.fonts.display
             font.italic: true
             font.pixelSize: 112 * menu.u
-            font.letterSpacing: 1.2 * menu.u
-            lineHeight: 0.98
+            font.letterSpacing: 0
+            lineHeight: 1.0
             wrapMode: Text.WordWrap
             fontSizeMode: Text.Fit
             minimumPixelSize: 48 * menu.u
