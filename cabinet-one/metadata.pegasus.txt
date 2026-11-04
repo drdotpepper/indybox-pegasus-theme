@@ -7,6 +7,7 @@ launch: "{file.path}"
 
 game: Gaurodan
 file: gaurodan/Gaurodan.exe
+assets.screenshot: gaurodan/indybox-thumbnail.png
 developer: Locomalito
 players: 1
 genre: Shoot 'em up
@@ -15,6 +16,7 @@ x-url: locomalito.com
 
 game: Hydorah
 file: hydorah/Hydorah.exe
+assets.screenshot: hydorah/indybox-thumbnail.png
 developer: Locomalito
 players: 1
 genre: Shoot 'em up
@@ -23,6 +25,7 @@ x-url: locomalito.com
 
 game: Maldita Castilla
 file: maldita-castilla/maldita_castilla_arcade_cabinet.exe
+assets.screenshot: maldita-castilla/indybox-thumbnail.png
 developer: Locomalito
 players: 1
 genre: Action platformer
@@ -31,6 +34,7 @@ x-url: locomalito.com
 
 game: The Curse of Issyos
 file: the-curse-of-issyos/Curse of Issyos.exe
+assets.screenshot: the-curse-of-issyos/indybox-thumbnail.png
 developer: Locomalito
 players: 1
 genre: Action platformer
