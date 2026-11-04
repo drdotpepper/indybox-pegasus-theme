@@ -154,9 +154,10 @@ Item {
             height: 44 * menu.u
             text: menu.game && menu.game.developer ? ("BY " + S.upper(S.cleanDev(menu.game.developer))) : ""
             color: S.accent
-            font.family: menu.fonts.pixel
-            font.pixelSize: 40 * menu.u
-            font.letterSpacing: 1.5 * menu.u
+            font.family: menu.fonts.display
+            font.italic: true
+            font.pixelSize: 44 * menu.u
+            font.letterSpacing: 1.2 * menu.u
             elide: Text.ElideRight
         }
         Text {   // hard shadow, like the website headline

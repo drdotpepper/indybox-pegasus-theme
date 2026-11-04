@@ -49,6 +49,7 @@ Rectangle {
             text: panel.dev
             color: S.fg
             font.family: panel.fonts.display
+            font.italic: true
             font.pixelSize: 38 * panel.u
             wrapMode: Text.WordWrap
             maximumLineCount: 2
@@ -101,6 +102,7 @@ Rectangle {
             text: panel.dev
             color: S.fg
             font.family: panel.fonts.display
+            font.italic: true
             font.pixelSize: 44 * panel.u
             fontSizeMode: Text.HorizontalFit
             minimumPixelSize: 24 * panel.u
