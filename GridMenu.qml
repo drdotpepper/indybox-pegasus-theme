@@ -204,8 +204,9 @@ Item {
             y: title.y + title.height + 16 * menu.u
             spacing: 14 * menu.u
             Pill {
-                width: 176 * menu.u
+                width: 190 * menu.u
                 u: menu.u
+                outline: false
                 family: menu.fonts.pixel
                 fontSize: 30
                 text: S.playersLabel(menu.game ? menu.game.players : 1)
@@ -214,6 +215,7 @@ Item {
                 visible: menu.game && menu.game.genre ? true : false
                 width: 282 * menu.u
                 u: menu.u
+                outline: false
                 family: menu.fonts.pixel
                 fontSize: 30
                 text: S.upper(menu.game ? menu.game.genre : "")

@@ -12,10 +12,11 @@ Rectangle {
     property string family: ""
     property real u: 1
     property real fontSize: 34
+    property bool outline: true
 
     radius: 0
     color: filled ? tone : "transparent"
-    border.width: Math.max(1, Math.round(u))
+    border.width: outline ? Math.max(1, Math.round(u)) : 0
     border.color: tone
 
     implicitWidth: label.implicitWidth + 56 * u
@@ -23,7 +24,8 @@ Rectangle {
 
     Text {
         id: label
-        anchors.centerIn: parent
+        x: pill.outline ? (pill.width - width) / 2 : 0
+        anchors.verticalCenter: parent.verticalCenter
         width: Math.min(implicitWidth, pill.width - 40 * pill.u)
         elide: Text.ElideRight
         text: pill.text

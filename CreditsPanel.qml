@@ -24,7 +24,7 @@ Rectangle {
     height: wide ? 148 * u : col.height + 44 * u
     radius: 0
     color: Qt.rgba(0, 0, 0, 0.8)
-    border.width: Math.max(1, Math.round(u))
+    border.width: 0
     border.color: S.fg
 
     // ---- tall version (strip menu, attract screen) ----
