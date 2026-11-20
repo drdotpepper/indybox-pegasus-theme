@@ -13,13 +13,13 @@ FocusScope {
     property int idle: 0
 
     FontLoader { id: rubikFont;  source: "assets/fonts/Rubik-BlackItalic.ttf" }
-    FontLoader { id: jerseyFont; source: "assets/fonts/Jersey10-Regular.ttf" }
-    FontLoader { id: interFont;  source: "assets/fonts/Inter-Variable.ttf" }
+    FontLoader { id: barlowSemi; source: "assets/fonts/Barlow-SemiBold.ttf" }
+    FontLoader { id: barlowReg;  source: "assets/fonts/Barlow-Regular.ttf" }
 
     readonly property var fontSet: ({
         display: rubikFont.name  !== "" ? rubikFont.name  : "Arial Black",
-        pixel:   jerseyFont.name !== "" ? jerseyFont.name : "Courier New",
-        text:    interFont.name  !== "" ? interFont.name  : "Segoe UI"
+        pixel:   barlowSemi.name !== "" ? barlowSemi.name : "Arial",
+        text:    barlowReg.name  !== "" ? barlowReg.name  : "Segoe UI"
     })
 
     function wake() {

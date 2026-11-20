@@ -1,7 +1,7 @@
 # Indybox theme for Pegasus
 
 Black, orange and pixel-font front end for Indybox cabinets, styled from indybox.games
-(palette, Anton / Inter / Jersey 10 fonts, 15px boxed buttons, orange fill on focus).
+(palette, Rubik Black Italic headings with Barlow text, 15px boxed buttons, orange fill on focus).
 
 ## Install
 
