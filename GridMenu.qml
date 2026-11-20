@@ -93,15 +93,15 @@ Item {
         mipmap: true
     }
     Text {
-        x: 346 * menu.u
+        x: 342 * menu.u
         y: 21 * menu.u
         height: 78 * menu.u
         verticalAlignment: Text.AlignVCenter
         text: "@" + S.upper(Config.venueName)
         color: S.fg
-        font.family: menu.fonts.pixel
-        font.pixelSize: 38 * menu.u
-        font.letterSpacing: 1 * menu.u
+        font.family: menu.fonts.logo
+        font.pixelSize: 50 * menu.u
+        font.letterSpacing: 0
     }
 
     // ---- the grid ----

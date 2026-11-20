@@ -13,10 +13,12 @@ FocusScope {
     property int idle: 0
 
     FontLoader { id: rubikFont;  source: "assets/fonts/Rubik-BlackItalic.ttf" }
+    FontLoader { id: rubikUpright; source: "assets/fonts/Rubik-Black.ttf" }
     FontLoader { id: patuaFont;  source: "assets/fonts/PatuaOne-Regular.ttf" }
 
     readonly property var fontSet: ({
         display: rubikFont.name  !== "" ? rubikFont.name  : "Arial Black",
+        logo:    rubikUpright.name !== "" ? rubikUpright.name : "Arial Black",
         pixel:   patuaFont.name !== "" ? patuaFont.name : "Georgia",
         text:    patuaFont.name !== "" ? patuaFont.name : "Georgia"
     })
