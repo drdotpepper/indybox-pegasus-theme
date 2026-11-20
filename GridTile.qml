@@ -19,7 +19,7 @@ Item {
     readonly property real inset: selected ? 8 : 16   // unselected: roomier gap so the art clears the stepped corners
     readonly property real tabW: selected ? 322 : 330
     readonly property real textW: tabW - (selected ? 32 : 38)    // room for the title
-    readonly property real maxTextSize: selected ? 52 : 54
+    readonly property real maxTextSize: selected ? 29 : 28
 
     width: tileW * u
     height: tileH * u
@@ -70,17 +70,19 @@ Item {
     Text {
         id: label
         x: (tile.tabW - tile.textW) / 2 * tile.u
-        // every title shares one baseline, whatever size it ends up
-        y: 34.5 * tile.u - baselineOffset
+        // titles sit centred in the tab, whatever size they shrink to
+        y: 2 * tile.u
         width: tile.textW * tile.u
+        height: (tile.tabH - 2) * tile.u
+        verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         text: S.upper(tile.game ? tile.game.title : "")
         elide: Text.ElideRight
         color: tile.selected ? S.bg : S.muted
         font.family: tile.fonts.pixel
         font.pixelSize: tile.maxTextSize * tile.u
-        font.letterSpacing: 1.5 * tile.u
+        font.letterSpacing: 0.5 * tile.u
         fontSizeMode: Text.HorizontalFit
-        minimumPixelSize: 22 * tile.u
+        minimumPixelSize: 14 * tile.u
     }
 }
