@@ -13,13 +13,12 @@ FocusScope {
     property int idle: 0
 
     FontLoader { id: rubikFont;  source: "assets/fonts/Rubik-BlackItalic.ttf" }
-    FontLoader { id: barlowSemi; source: "assets/fonts/Barlow-SemiBold.ttf" }
-    FontLoader { id: barlowReg;  source: "assets/fonts/Barlow-Regular.ttf" }
+    FontLoader { id: patuaFont;  source: "assets/fonts/PatuaOne-Regular.ttf" }
 
     readonly property var fontSet: ({
         display: rubikFont.name  !== "" ? rubikFont.name  : "Arial Black",
-        pixel:   barlowSemi.name !== "" ? barlowSemi.name : "Arial",
-        text:    barlowReg.name  !== "" ? barlowReg.name  : "Segoe UI"
+        pixel:   patuaFont.name !== "" ? patuaFont.name : "Georgia",
+        text:    patuaFont.name !== "" ? patuaFont.name : "Georgia"
     })
 
     function wake() {

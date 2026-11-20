@@ -34,17 +34,14 @@ Item {
         anchors.fill: parent
         renderStrategy: Canvas.Cooperative
 
-        // Corners are built from square "pixels" (px design units each) instead of curves.
-        // A corner is [cornerX, cornerY, inDirX, inDirY, outDirX, outDirY, steps].
+        // Smooth rounded corners. A corner is [cornerX, cornerY, inDirX, inDirY, outDirX, outDirY, steps];
+        // the radius is steps * p.
         function poly(ctx, corners, p) {
             for (var i = 0; i < corners.length; i++) {
-                var c = corners[i], k = c[6];
-                var x = c[0] - c[2] * k * p, y = c[1] - c[3] * k * p;
-                if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-                for (var j = 0; j < k; j++) {
-                    x += c[2] * p; y += c[3] * p; ctx.lineTo(x, y);
-                    x += c[4] * p; y += c[5] * p; ctx.lineTo(x, y);
-                }
+                var c = corners[i], r = c[6] * p;
+                var sx = c[0] - c[2] * r, sy = c[1] - c[3] * r;
+                if (i === 0) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
+                ctx.arcTo(c[0], c[1], c[0] + c[4] * r, c[1] + c[5] * r, r);
             }
             ctx.closePath();
         }
@@ -97,7 +94,7 @@ Item {
             if (frame.lineWidth > 0) {
                 var lw = Math.max(1, Math.round(frame.lineWidth * frame.u));
                 ctx.lineWidth = lw;
-                ctx.lineJoin = "miter";
+                ctx.lineJoin = "round";
                 ctx.strokeStyle = frame.lineColor;
                 ctx.beginPath();
                 outline(ctx, lw / 2);
