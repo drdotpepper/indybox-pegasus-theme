@@ -19,7 +19,7 @@ Item {
     property int colorIndex: 0
     readonly property color tone: S.bounceColors[colorIndex % S.bounceColors.length]
 
-    // integer logo scale keeps the pixel art crisp (1x at 1080p, 2x at 4K)
+    // integer logo scale (1x at 1080p, 2x at 4K)
     readonly property int k: Math.max(1, Math.floor(width / 1600))
 
     Rectangle { anchors.fill: parent; color: S.bg }
@@ -43,17 +43,17 @@ Item {
         x: Math.round(px)
         y: Math.round(py)
         width: 424 * attract.k
-        height: (156 + 22 + 80) * attract.k
+        height: (68 + 22 + 80) * attract.k
 
         Image {
-            source: "assets/indybox-logo-px.png"
+            source: "assets/indybox-logo.png"
             width: 424 * attract.k
-            height: 156 * attract.k
-            smooth: false
-            mipmap: false
+            height: 68 * attract.k
+            smooth: true
+            mipmap: true
         }
         Pill {
-            y: (156 + 22) * attract.k
+            y: (68 + 22) * attract.k
             width: 424 * attract.k
             height: 80 * attract.k
             u: attract.k

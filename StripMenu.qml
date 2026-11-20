@@ -68,11 +68,13 @@ Item {
     Image {
         x: 96 * menu.u
         y: 21 * menu.u
-        width: 212 * menu.u
+        width: 230 * menu.u
         height: 78 * menu.u
-        source: "assets/indybox-logo-px.png"
-        smooth: false
-        mipmap: false
+        source: "assets/indybox-logo.png"
+        fillMode: Image.PreserveAspectFit
+        horizontalAlignment: Image.AlignLeft
+        smooth: true
+        mipmap: true
     }
     Row {
         anchors.right: parent.right
