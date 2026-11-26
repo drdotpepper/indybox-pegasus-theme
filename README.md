@@ -13,7 +13,7 @@ Black, orange and pixel-font front end for Indybox cabinets, styled from indybox
 
 ## Updating
 
-If this folder was cloned with git, double-click `update-theme.bat` to pull the latest version,
+If this folder was cloned with git, double-click `update-theme.bat` to pull the latest release,
 then press F5 in Pegasus. Your own edits to `config.js` (venue name etc.) are kept.
 
 ## Per-cabinet settings
@@ -77,3 +77,22 @@ Double-click `setup-auto-update.bat` once. After that the PC downloads theme upd
 15 minutes and restarts Pegasus at 05:00 so the new look appears. To see an update straight
 away, double-click `update-theme.bat` and press F5. Needs Git for Windows installed, and the
 PC must be logged in to Windows.
+
+Cabinets only take updates from the **`release` branch**, never from `main`. Work on `main` as
+usual; when a change is ready for venues, publish it with:
+
+    git push origin main:release
+
+The setup copies the updater to `%LOCALAPPDATA%\Indybox\` and schedules that copy, so a
+`git pull` can't change the script that runs. If you ever edit `indybox-updater.bat`, run
+`setup-auto-update.bat` again on each cabinet to install the new copy.
+
+## Keeping cabinets safe
+
+Every cabinet runs whatever is on the `release` branch, so:
+
+- Keep two-factor login turned on for the GitHub account that owns this repo.
+- In GitHub, under Settings > Branches, protect `release` so it can't be force-pushed or deleted.
+- Run Pegasus under a standard (non-admin) Windows account set to log in automatically.
+- Don't map any player button to Esc or the Windows key. Check what's on screen when a game
+  crashes or quits: patrons shouldn't be left at the Windows desktop.
