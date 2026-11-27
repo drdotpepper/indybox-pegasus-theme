@@ -6,7 +6,7 @@
 var layout = "grid";
 
 // Shown on the attract screen as "indybox@VENUE" and in the menu header.
-var venueName = "BLONDIES";
+var venueName = "VENUE";
 
 // Seconds without any input before the cabinet drops into attract mode.
 var idleSeconds = 90;

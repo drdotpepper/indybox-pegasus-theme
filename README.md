@@ -18,7 +18,7 @@ then press F5 in Pegasus. Your own edits to `config.js` (venue name etc.) are ke
 
 ## Per-cabinet settings
 
-Open `config.js`. The layout (`"grid"` or `"strip"`), venue name (`BLONDIES`), idle time before
+Open `config.js`. The layout (`"grid"` or `"strip"`), venue name (`VENUE`), idle time before
 attract mode, and how long each title card shows are all there. Nothing else changes per venue.
 
 ## What it does
